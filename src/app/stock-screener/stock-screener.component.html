@@ -1,7 +1,11 @@
 <ng-container>
- <mat-toolbar color="primary" sticky class="sticky-toolbar">
+ <mat-toolbar color="primary" sticky class="sticky-toolbar reduced-width-toolbar">
   <img src="assets/xtrades-logo.png" alt="Logo" class="logo" />
   <span>trades</span>
+  <span class="spacer"></span>
+ </mat-toolbar>
+
+ <mat-toolbar class="filter-toolbar">
   <span class="spacer"></span>
   <button mat-icon-button (click)="openFilterDialog()">
    <mat-icon>filter_list</mat-icon>
@@ -10,10 +14,10 @@
 
  <ng-container>
   <mat-table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="stars">
-        <mat-header-cell *matHeaderCellDef ></mat-header-cell>
-        <mat-cell *matCellDef="let element; let i = index"> <mat-icon>star_border</mat-icon> </mat-cell>
-       </ng-container>
+   <ng-container matColumnDef="stars">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element; let i = index"> <mat-icon>star_border</mat-icon> </mat-cell>
+   </ng-container>
 
    <ng-container matColumnDef="number">
     <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
