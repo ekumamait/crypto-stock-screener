@@ -1,0 +1,15 @@
+.container {
+ margin: 20px;
+}
+
+.spacer {
+ flex: 1 1 auto;
+}
+
+.content {
+ margin-top: 20px;
+}
+
+mat-table {
+ width: 100%;
+}
