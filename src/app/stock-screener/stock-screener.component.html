@@ -1,36 +1,90 @@
-<div class="container">
- <mat-toolbar color="primary">
-  <span>Crypto Stock Screener</span>
+<ng-container>
+ <mat-toolbar color="primary" sticky class="sticky-toolbar">
+  <img src="assets/xtrades-logo.png" alt="Logo" class="logo" />
+  <span>trades</span>
   <span class="spacer"></span>
   <button mat-icon-button (click)="openFilterDialog()">
    <mat-icon>filter_list</mat-icon>
   </button>
  </mat-toolbar>
 
- <div class="content">
-  <mat-table [dataSource]="filteredCryptos">
+ <ng-container>
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="stars">
+        <mat-header-cell *matHeaderCellDef ></mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index"> <mat-icon>star_border</mat-icon> </mat-cell>
+       </ng-container>
+
+   <ng-container matColumnDef="number">
+    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+    <mat-cell *matCellDef="let element; let i = index"> {{ i + 1 }} </mat-cell>
+   </ng-container>
+
    <ng-container matColumnDef="symbol">
-    <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{ element.symbol }} </mat-cell>
    </ng-container>
 
    <ng-container matColumnDef="price">
-    <mat-header-cell *matHeaderCellDef> Price (USDT) </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{ element.price }} </mat-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+    <mat-cell
+     *matCellDef="let element"
+     [ngClass]="{
+      'price-increase': element.priceChange >= 0,
+      'price-decrease': element.priceChange < 0
+     }"
+    >
+     {{ element.lastPrice | currency }}
+    </mat-cell>
    </ng-container>
 
    <ng-container matColumnDef="volume">
-    <mat-header-cell *matHeaderCellDef> Volume (USDT) </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{ element.volume }} </mat-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Volume </mat-header-cell>
+    <mat-cell
+     *matCellDef="let element"
+     [ngClass]="{
+      'price-increase': element.priceChange >= 0,
+      'price-decrease': element.priceChange < 0
+     }"
+    >
+     {{ element.volume | number : "1.0-2" }}
+    </mat-cell>
    </ng-container>
 
    <ng-container matColumnDef="priceChange">
-    <mat-header-cell *matHeaderCellDef> 24h Change (%) </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{ element.priceChange }} </mat-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header> 24h (%) </mat-header-cell>
+    <mat-cell
+     *matCellDef="let element"
+     [ngClass]="{
+      'price-increase': element.priceChange >= 0,
+      'price-decrease': element.priceChange < 0
+     }"
+    >
+     {{ element.priceChange | number : "1.2-2" }}%
+    </mat-cell>
    </ng-container>
 
-   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+   <!-- Quote Volume Column -->
+   <ng-container matColumnDef="quoteVolume">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Quote Volume</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.quoteVolume | number : "1.2-2" }}</mat-cell>
+   </ng-container>
+
+   <!-- Bid Price Column -->
+   <ng-container matColumnDef="bidPrice">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Bid Price</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.bidPrice | currency }}</mat-cell>
+   </ng-container>
+
+   <!-- Ask Price Column -->
+   <ng-container matColumnDef="askPrice">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Ask Price</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.askPrice | currency }}</mat-cell>
+   </ng-container>
+
+   <mat-header-row *matHeaderRowDef="displayedColumns" class="sticky-toolbar"></mat-header-row>
    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClick(row)"></mat-row>
   </mat-table>
- </div>
-</div>
+  <mat-paginator [pageSize]="15" showFirstLastButtons></mat-paginator>
+ </ng-container>
+</ng-container>

@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-filter-dialog',
   templateUrl: './filter-dialog.component.html',
-  styleUrls: ['./filter-dialog.component.css']
+  styleUrls: ['./filter-dialog.component.scss']
 })
 export class FilterDialogComponent {
 
