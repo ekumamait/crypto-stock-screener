@@ -1,0 +1,23 @@
+<div mat-dialog-title class="dialog-title">
+  <div class="title-left">
+    <mat-icon>filter_list</mat-icon>
+    <h1>Filters</h1>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div mat-dialog-content class="filter-container">
+  <div class="form-group" *ngFor="let field of filterFields">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ field.label }}</mat-label>
+      <input matInput [(ngModel)]="data[field.key]" type="number" />
+    </mat-form-field>
+  </div>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial style="background-color: royalblue; color: white;">Apply Changes</button>
+</div>

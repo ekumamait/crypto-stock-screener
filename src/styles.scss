@@ -16,50 +16,40 @@ $theme: mat-dark-theme(
   mat-palette($mat-red) // Warning color for errors
 );
 
-// Include Angular Material core styles
 @include mat-core();
 @include angular-material-theme($theme);
 
-// Global styles
 html, body {
   height: 100%;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
+  background-color: $custom-dark-blue;
+  color: mat-color($primary, 50);
 }
 
-body {
-  background-color: $custom-dark-blue; // Dark blue background for the body
-  color: mat-color($primary, 50); // Light text color for contrast
-}
-
-// App background
 .mat-app-background {
-  background: mat-color($primary, 800); // Slightly lighter background for app content
+  background: mat-color($primary, 800);
 }
 
-// Card styling
 .mat-card {
-  background:$custom-dark-blue;; // Card background
-  color: mat-color($primary, 50); // Card text color
+  background:$custom-dark-blue;
+  color: mat-color($primary, 50); 
 }
 
-// Form field styling
 .mat-form-field {
-  color: mat-color($primary, 50); // Text color inside form fields
+  color: mat-color($primary, 50);
 }
 
-// Dialog container styling
 .mat-dialog-container {
-  background-color: mat-color($primary, 800); // Dialog background
-  color: mat-color($primary, 50); // Dialog text color
+  background-color: mat-color($primary, 800);
+  color: mat-color($primary, 50);
 }
 
-// Table styling
 .mat-table {
-  background-color: $custom-dark-blue; // Table background
-  width: 80%; // Adjust the width as needed
-  margin: 0 auto; // Center the table horizontally
-  border-collapse: collapse; // Ensure borders are collapsed
+  background-color: $custom-dark-blue;
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
 }
 
 .mat-toolbar {
@@ -67,30 +57,29 @@ body {
 }
 
 .mat-header-cell, .mat-cell {
-  color: mat-color($primary, 50); // Table text color
+  color: mat-color($primary, 50);
 }
 
 .mat-header-row {
-  background-color: $custom-dark-blue; // Table header background
+  background-color: $custom-dark-blue;
 }
 
 .mat-row:nth-child(odd) {
-  background-color: $custom-dark-blue; // Alternating row background
+  background-color: $custom-dark-blue;
 }
 
 .mat-table .mat-cell,
 .mat-table .mat-header-cell {
-  border: none; // Remove default table borders
-  padding: 8px; // Adjust padding as needed
+  border: none;
+  padding: 8px;
 }
 
-// Paginator styling
 .mat-paginator {
-  background-color: $custom-dark-blue;; // Paginator background
-  color: mat-color($primary, 50); // Paginator text color
+  background-color: $custom-dark-blue;
+  color: mat-color($primary, 50);
   display: flex;
   justify-content: center;
-  align-items: center; // Optional, to center vertically
+  align-items: center;
 }
 
 
@@ -132,11 +121,10 @@ body {
   border-color: rgba(255, 255, 255, 0.5);
   margin: 0 16px;
  }
- 
 
  .mat-dialog-container {
-  background-color: #333740; /* Grey background */
-  color: #ffffff; /* Light text color for contrast */
+  background-color: #333740;
+  color: #ffffff;
   padding: 16px;
   border-radius: 8px;
 }

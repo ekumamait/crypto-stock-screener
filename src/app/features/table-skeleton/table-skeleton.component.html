@@ -1,0 +1,48 @@
+<!-- Show no data message when no data is found -->
+<div class="no-data">
+ <div class="no-data-content">
+  <h1>No results</h1>
+  <p>Try adjusting your search by reseting filters</p>
+  <button mat-raised-button (click)="resetFilters()" style="background-color: royalblue; color: white">
+   Reset filters
+  </button>
+ </div>
+</div>
+
+<ng-container class="no-data">
+ <mat-table *ngIf="!isLoading">
+  <ng-container matColumnDef="symbol">
+   <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+  </ng-container>
+  <ng-container matColumnDef="price">
+   <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+  </ng-container>
+  <ng-container matColumnDef="volume">
+   <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+  </ng-container>
+  <ng-container matColumnDef="priceChange">
+   <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+  </ng-container>
+  <ng-container matColumnDef="quoteVolume">
+   <mat-header-cell *matHeaderCellDef> Quote Volume </mat-header-cell>
+  </ng-container>
+  <ng-container matColumnDef="bidPrice">
+   <mat-header-cell *matHeaderCellDef> Bid Price </mat-header-cell>
+  </ng-container>
+  <ng-container matColumnDef="askPrice">
+   <mat-header-cell *matHeaderCellDef> Ask Price </mat-header-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns">
+   <mat-cell *matCellDef="let element" colspan="7">
+    <div class="skeleton-row"></div>
+   </mat-cell>
+  </mat-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns">
+   <mat-cell *matCellDef="let element" colspan="7">
+    <div class="skeleton-row"></div>
+   </mat-cell>
+  </mat-row>
+ </mat-table>
+ <mat-paginator [pageSize]="0" showFirstLastButtons></mat-paginator>
+</ng-container>
