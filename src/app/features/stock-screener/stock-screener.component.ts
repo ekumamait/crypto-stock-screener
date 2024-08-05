@@ -41,19 +41,22 @@ export class StockScreenerComponent implements OnInit, OnDestroy {
  @ViewChild(MatSort) sort!: MatSort;
 
  private subscription!: Subscription;
+ private shouldUpdate = true;
 
  constructor(private binanceService: BinanceService, public dialog: MatDialog, private filterService: FilterService) {}
 
  ngOnInit(): void {
   this.subscription = interval(10000)
    .pipe(
-    switchMap(() => this.binanceService.getCryptos()),
-    tap(() => (this.isLoading = true)),
+    switchMap(() => this.shouldUpdate ? this.binanceService.getCryptos() : []),
+    tap(() => this.isLoading = true),
     tap((data) => {
-     this.cryptos = data.filter((crypto) => crypto.symbol.endsWith("USDT"));
-     this.applyFilters();
+     if (this.shouldUpdate && data) {
+      this.cryptos = data.filter((crypto) => crypto.symbol.endsWith("USDT"));
+      this.applyFilters();
+     }
     }),
-    tap(() => (this.isLoading = false))
+    tap(() => this.isLoading = false)
    )
    .subscribe();
  }
@@ -93,6 +96,8 @@ export class StockScreenerComponent implements OnInit, OnDestroy {
 
  openFilterDialog(): void {
   this.isLoading = false;
+  this.shouldUpdate = false;
+
   const dialogRef = this.dialog.open(FilterDialogComponent, {
    width: "500px",
    data: {
@@ -106,6 +111,8 @@ export class StockScreenerComponent implements OnInit, OnDestroy {
   });
 
   dialogRef.afterClosed().subscribe((result) => {
+   this.shouldUpdate = true;
+
    if (result) {
     this.minVolume = result.minVolume;
     this.maxVolume = result.maxVolume;
