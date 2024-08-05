@@ -85,6 +85,9 @@ html, body {
 
 .mat-paginator-container {
   width: 65% ;
+  @media (max-width: 600px) {
+    justify-content: center !important;
+   }
 }
 
 .mat-paginator-range-label {

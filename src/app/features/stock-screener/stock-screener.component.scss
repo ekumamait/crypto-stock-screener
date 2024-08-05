@@ -12,6 +12,11 @@
 
 mat-table {
  width: 50%;
+ @media (max-width: 600px) {
+  width: 100%;
+  overflow-x: auto;
+  margin: 0 auto;
+ }
 }
 
 .mat-mdc-row:hover .mat-mdc-cell {
@@ -29,11 +34,9 @@ mat-table {
 .logo {
  height: 50px;
  margin-right: 5px;
-}
-
-.toolbar-divider {
- border-color: rgba(255, 255, 255, 0.5);
- margin: 0 16px;
+ @media (max-width: 600px) {
+  height: 25px;
+ }
 }
 
 .price-increase {
@@ -47,6 +50,17 @@ mat-table {
 mat-paginator {
  margin-top: 16px;
  width: 60%;
+ @media (max-width: 600px) {
+  width: 100%;
+ }
+}
+
+.paginator {
+ margin-top: 20px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
 }
 
 @media (max-width: 600px) {
@@ -60,7 +74,7 @@ mat-paginator {
  margin: 15px auto;
 
  @media (max-width: 600px) {
-  width: 90%;
+  max-width: 90%;
  }
 }
 
@@ -69,6 +83,6 @@ mat-paginator {
  padding: 8px;
  width: 75%;
  @media (max-width: 600px) {
-  width: 80%;
+  width: 100%;
  }
 }
