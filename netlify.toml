@@ -2,9 +2,6 @@
   command = "ng build"
   publish = "dist/crypto-stock-screener"
 
-[functions]
-  server = "netlify/functions/server"
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
