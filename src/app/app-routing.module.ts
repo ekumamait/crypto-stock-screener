@@ -1,13 +1,11 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { StockScreenerComponent } from './stock-screener/stock-screener.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { StockScreenerComponent } from "../app/features/stock-screener/stock-screener.component";
 
-const routes: Routes = [
-  { path: '', component: StockScreenerComponent }
-];
+const routes: Routes = [{ path: "", component: StockScreenerComponent }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+ imports: [RouterModule.forRoot(routes)],
+ exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

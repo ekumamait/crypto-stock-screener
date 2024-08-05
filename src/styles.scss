@@ -1,0 +1,130 @@
+@import "~@angular/material/theming";
+
+// Define custom color palettes
+$primary: mat-palette($mat-indigo, 900, 800, 700); // Define base colors
+$custom-dark-blue: #222531; // Your custom dark blue color
+
+// Create a custom dark theme with your custom color
+$theme: mat-dark-theme(
+  mat-palette(
+    map-merge(
+      $primary,
+      (500: $custom-dark-blue) // Use custom dark blue as a primary color
+    )
+  ),
+  mat-palette($mat-blue, A200, A100, A400), // Accent color for highlights
+  mat-palette($mat-red) // Warning color for errors
+);
+
+@include mat-core();
+@include angular-material-theme($theme);
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: $custom-dark-blue;
+  color: mat-color($primary, 50);
+}
+
+.mat-app-background {
+  background: mat-color($primary, 800);
+}
+
+.mat-card {
+  background:$custom-dark-blue;
+  color: mat-color($primary, 50); 
+}
+
+.mat-form-field {
+  color: mat-color($primary, 50);
+}
+
+.mat-dialog-container {
+  background-color: mat-color($primary, 800);
+  color: mat-color($primary, 50);
+}
+
+.mat-table {
+  background-color: $custom-dark-blue;
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.mat-toolbar {
+  width: 90%;
+}
+
+.mat-header-cell, .mat-cell {
+  color: mat-color($primary, 50);
+}
+
+.mat-header-row {
+  background-color: $custom-dark-blue;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: $custom-dark-blue;
+}
+
+.mat-table .mat-cell,
+.mat-table .mat-header-cell {
+  border: none;
+  padding: 8px;
+}
+
+.mat-paginator {
+  background-color: $custom-dark-blue;
+  color: mat-color($primary, 50);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.mat-paginator-container {
+  width: 65% ;
+}
+
+.mat-paginator-range-label {
+  color: mat-color($primary, 50);
+}
+
+.mat-paginator-page-size {
+  color: mat-color($primary, 50);
+}
+
+.mat-paginator-navigation-button {
+  color: mat-color($primary, 50);
+}
+
+.mat-paginator-navigation-icon {
+  color: mat-color($primary, 50);
+}
+
+.mat-paginator-range-label,
+.mat-paginator-page-size,
+.mat-paginator-navigation-button,
+.mat-paginator-navigation-icon {
+  color: mat-color($primary, 50);
+}
+
+
+.sticky-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.toolbar-divider {
+  border-color: rgba(255, 255, 255, 0.5);
+  margin: 0 16px;
+ }
+
+ .mat-dialog-container {
+  background-color: #333740;
+  color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+}

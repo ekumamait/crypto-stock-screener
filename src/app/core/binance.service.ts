@@ -13,4 +13,8 @@ export class BinanceService {
   getCryptos(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  getPriceHistory(symbol: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}aggTrades?symbol=${symbol}&limit=1000`);
+  }
 }
