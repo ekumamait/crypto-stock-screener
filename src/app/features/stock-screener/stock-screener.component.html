@@ -12,11 +12,17 @@
   </button>
  </mat-toolbar>
 
+ <ng-template #loaderContent>
+  <div class="loader">
+   <mat-spinner class="loader-large" mode="indeterminate" diameter="24"></mat-spinner>
+  </div>
+ </ng-template>
+
  <ng-template #skeletonContent>
   <app-table-skeleton></app-table-skeleton>
  </ng-template>
 
- <ng-container *ngIf="dataSource.data.length > 0; else skeletonContent">
+ <ng-container *ngIf="!isLoading && dataSource.data.length > 0; else showLoaderOrSkeleton">
   <div class="table-wrapper">
    <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="stars">
@@ -89,4 +95,10 @@
   </div>
   <mat-paginator [pageSize]="15" showFirstLastButtons></mat-paginator>
  </ng-container>
+
+ <ng-template #showLoaderOrSkeleton>
+  <ng-container *ngIf="isLoading; else skeletonContent">
+   <ng-container *ngTemplateOutlet="loaderContent"></ng-container>
+  </ng-container>
+ </ng-template>
 </ng-container>

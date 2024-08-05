@@ -82,6 +82,20 @@ html, body {
   align-items: center;
 }
 
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.mat-progress-spinner {
+  width: 48px;
+  height: 48px;
+  circle {
+    stroke: red;
+  }
+}
 
 .mat-paginator-container {
   width: 65% ;

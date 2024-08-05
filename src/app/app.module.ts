@@ -12,6 +12,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatSortModule } from "@angular/material/sort";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -30,6 +31,7 @@ import { TableSkeletonComponent } from "./features/table-skeleton/table-skeleton
   BrowserAnimationsModule,
   ReactiveFormsModule,
   MatToolbarModule,
+  MatProgressSpinnerModule,
   MatButtonModule,
   MatIconModule,
   MatTableModule,
