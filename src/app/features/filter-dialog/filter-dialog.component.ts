@@ -18,9 +18,13 @@ export class FilterDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<FilterDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) { }
 
   onNoClick(): void {
+    if (this.data.onCancel) {
+      this.data.onCancel();
+    }
     this.dialogRef.close();
   }
 }
