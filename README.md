@@ -7,4 +7,4 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## Link to app
 
-(https://develop--fascinating-figolla-969dae.netlify.app/)
+(https://develop--xtreme-stock-screener.netlify.app/)
