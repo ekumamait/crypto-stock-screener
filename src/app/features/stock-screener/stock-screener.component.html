@@ -36,43 +36,43 @@
         </ng-container>
 
         <ng-container matColumnDef="symbol">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{ element.s }} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="price">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
           <mat-cell *matCellDef="let element" [ngClass]="{ 'price-increase': element.P >= 0, 'price-decrease': element.P < 0 }">
             {{ element.c | currency }}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="volume">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Volume </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef> Volume </mat-header-cell>
           <mat-cell *matCellDef="let element" [ngClass]="{ 'price-increase': element.P >= 0, 'price-decrease': element.P < 0 }">
             {{ element.v | number: '1.0-2' }}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="priceChange">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> 24h (%) </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef> 24h (%) </mat-header-cell>
           <mat-cell *matCellDef="let element" [ngClass]="{ 'price-increase': element.P >= 0, 'price-decrease': element.P < 0 }">
             {{ element.P | number: '1.2-2' }}%
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="quoteVolume">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Quote Volume </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef> Quote Volume </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{ element.q | number: '1.2-2' }} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="bidPrice">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Bid Price </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef> Bid Price </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{ element.b | currency }} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="askPrice">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Ask Price </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef> Ask Price </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{ element.a | currency }} </mat-cell>
         </ng-container>
 
