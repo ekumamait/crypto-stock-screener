@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from "@angular/core";
+import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatTableDataSource } from "@angular/material/table";
 import { BinanceWebSocketService } from "../../core/binancewebsocket.service";
@@ -6,6 +6,7 @@ import { FilterDialogComponent } from "../filter-dialog/filter-dialog.component"
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { FilterService } from "src/app/core/filter.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-stock-screener",
@@ -40,6 +41,7 @@ export class StockScreenerComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort) sort!: MatSort;
 
   private shouldUpdate = true;
+  private filterSubscription!: Subscription;
 
   constructor(
     private binanceWebSocketService: BinanceWebSocketService,
@@ -48,6 +50,11 @@ export class StockScreenerComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.filterSubscription = this.filterService.filters$.subscribe((filters) => {
+      if (filters) {
+        this.clearFilters()
+      }
+    });
     this.binanceWebSocketService.messageHandler = (data) => {
       this.isLoading = true;
       if (this.shouldUpdate && data) {
@@ -157,6 +164,9 @@ export class StockScreenerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (this.filterSubscription) {
+      this.filterSubscription.unsubscribe();
+    }
     this.binanceWebSocketService.messageHandler = () => {};
   }
 }

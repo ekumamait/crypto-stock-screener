@@ -31,5 +31,7 @@ export class FilterService {
       bidPrice: '',
       askPrice: ''
     });
+    console.log('>>>>>>');
+    
   }
 }
