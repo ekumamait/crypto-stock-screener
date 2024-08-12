@@ -12,11 +12,17 @@
 
 mat-table {
  width: 50%;
+ overflow-x: auto;
  @media (max-width: 600px) {
   width: 100%;
   overflow-x: auto;
   margin: 0 auto;
  }
+}
+
+mat-header-cell,
+mat-cell {
+ min-width: 100px;
 }
 
 .mat-mdc-row:hover .mat-mdc-cell {
