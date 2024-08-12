@@ -18,6 +18,19 @@ mat-table {
   overflow-x: auto;
   margin: 0 auto;
  }
+ @media (max-width: 600px) {
+  height: calc(100vh - 200px);
+ }
+ @media (min-width: 601px) and (max-width: 900px) {
+  height: calc(100vh - 150px);
+ }
+ @media (min-width: 901px) {
+  height: calc(80vh - 100px);
+ }
+}
+
+mat-table-body-wrapper {
+  overflow-x: auto;
 }
 
 mat-header-cell,
